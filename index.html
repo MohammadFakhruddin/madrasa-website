@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>গাউছিয়া মুঈনীয়া কামিল মাদ্রাসা</title>
+<title>ছিপাতলী জামেয়া গাউছিয়া মূঈনীয়া কামিল মাদরাসা</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
@@ -116,9 +116,9 @@
   .brand-text .name{
     font-family:var(--serif);
     font-weight:700;
-    font-size:1.18rem;
+    font-size:1.02rem;
     color:var(--emerald);
-    line-height:1.2;
+    line-height:1.25;
   }
   .brand-text .sub{
     font-size:0.74rem;
@@ -266,9 +266,7 @@
     width:100%;
     max-width:380px;
     aspect-ratio: 3/4;
-    background:
-      radial-gradient(circle at 50% 32%, rgba(201,162,75,0.16), transparent 60%),
-      var(--sand);
+    background: var(--sand);
     border:2px solid var(--gold);
     border-radius:50% 50% 8px 8px / 38% 38% 8px 8px;
     position:relative;
@@ -278,38 +276,65 @@
     justify-content:center;
     overflow:hidden;
   }
+  .mihrab-slide{
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-repeat:no-repeat;
+    opacity:0;
+    z-index:0;
+    animation: mihrabFade 12s infinite;
+  }
+  .mihrab-slide:nth-child(1){ background-image:url('images/campus-field.jpg'); background-position:center 42%; animation-delay:0s; }
+  .mihrab-slide:nth-child(2){ background-image:url('images/campus-gate.jpg'); background-position:center 22%; animation-delay:4s; }
+  .mihrab-slide:nth-child(3){ background-image:url('images/campus-building.jpg'); background-position:center 30%; animation-delay:8s; }
+  @keyframes mihrabFade{
+    0%{ opacity:0; }
+    4%{ opacity:1; }
+    29%{ opacity:1; }
+    35%{ opacity:0; }
+    100%{ opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .mihrab-slide{ animation:none; opacity:0; }
+    .mihrab-slide:nth-child(1){ opacity:1; }
+  }
   .mihrab::before{
     content:'';
     position:absolute;
     inset:14px;
-    border:1px solid var(--gold);
+    border:1px solid var(--gold-soft);
     border-radius:50% 50% 6px 6px / 35% 35% 6px 6px;
-    opacity:0.6;
+    opacity:0.85;
+    z-index:2;
+    pointer-events:none;
   }
   .mihrab::after{
     content:'';
     position:absolute;
-    top:0; left:0; right:0; bottom:0;
-    background-image: radial-gradient(circle at 1px 1px, rgba(15,61,46,0.18) 1px, transparent 1.4px);
-    background-size:18px 18px;
+    left:0; right:0; bottom:0;
+    height:46%;
+    background:linear-gradient(180deg, transparent, rgba(10,43,32,0.88) 78%);
+    z-index:1;
   }
   .mihrab-content{
     position:relative;
-    z-index:2;
+    z-index:3;
     text-align:center;
-    padding:0 26px 30px;
-    color:var(--emerald-deep);
+    padding:0 26px 28px;
+    color:var(--cream);
   }
   .mihrab-content .ar{
     font-family:var(--serif);
     font-size:1.5rem;
-    color:var(--emerald);
+    color:var(--gold-soft);
     margin-bottom:6px;
+    text-shadow:0 2px 8px rgba(0,0,0,0.4);
   }
   .mihrab-content .cap{
     font-size:0.78rem;
     letter-spacing:0.05em;
-    color:var(--teal);
+    color:var(--sand);
   }
 
   .hero-stats{
@@ -379,7 +404,7 @@
   /* ===== Quick access grid (the 10 sections) ===== */
   .quick-grid{
     display:grid;
-    grid-template-columns:repeat(5, 1fr);
+    grid-template-columns:repeat(4, 1fr);
     gap:1px;
     background:var(--line);
     border:1px solid var(--line);
@@ -530,6 +555,135 @@
   @media (max-width:880px){.bio-grid{grid-template-columns:1fr;}}
   @media (max-width:520px){.bio-card{grid-template-columns:1fr;} .bio-photo{padding:24px 0; border-right:none; border-bottom:1px solid var(--line);}}
 
+  /* ===== Khilafat lineage chain ===== */
+  .lineage-wrap{
+    margin-bottom:40px;
+  }
+  .lineage-label{
+    text-align:center;
+    font-family:var(--accent-serif);
+    font-style:italic;
+    color:var(--gold);
+    font-size:0.95rem;
+    margin-bottom:22px;
+  }
+  .lineage-chain{
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    gap:0;
+    max-width:980px;
+    margin:0 auto;
+  }
+  .lineage-item{
+    flex:1;
+    text-align:center;
+    padding:0 18px;
+    position:relative;
+  }
+  .lineage-item::after{
+    content:'';
+    position:absolute;
+    top:18px; right:-2px;
+    width:calc(100% - 4px);
+    height:1px;
+    background:repeating-linear-gradient(90deg, var(--gold) 0 6px, transparent 6px 12px);
+    z-index:0;
+  }
+  .lineage-item:last-child::after{display:none;}
+  .lnum{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:38px; height:38px;
+    border-radius:50%;
+    background:var(--emerald);
+    color:var(--gold-soft);
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:0.95rem;
+    position:relative;
+    z-index:1;
+    margin-bottom:14px;
+  }
+  .ltext{
+    font-size:0.83rem;
+    color:#4A4940;
+    line-height:1.5;
+  }
+  @media (max-width:880px){
+    .lineage-chain{flex-direction:column; gap:22px;}
+    .lineage-item::after{display:none;}
+    .lineage-item{padding:0;}
+  }
+
+  /* ===== Current Shaykh / Principal card ===== */
+  .current-bio-card{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow: 0 18px 40px -16px rgba(15,61,46,0.25);
+  }
+  .current-bio-photo{
+    background:linear-gradient(160deg,var(--sand),#E2D6B8);
+  }
+  .current-bio-photo img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+    min-height:260px;
+  }
+  .current-bio-info{
+    padding:34px 38px;
+  }
+  .current-bio-info .role{
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    color:var(--gold);
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .current-bio-info h3{
+    font-family:var(--serif);
+    font-size:1.35rem;
+    color:var(--emerald-deep);
+    line-height:1.4;
+    margin-bottom:6px;
+  }
+  .current-bio-info .cb-sub{
+    font-size:0.88rem;
+    color:var(--teal);
+    margin-bottom:18px;
+  }
+  .title-list{
+    border-top:1px solid var(--line);
+    padding-top:16px;
+  }
+  .title-list li{
+    font-size:0.86rem;
+    color:#454540;
+    padding:7px 0;
+    padding-left:18px;
+    position:relative;
+    line-height:1.5;
+  }
+  .title-list li::before{
+    content:'';
+    position:absolute;
+    left:0; top:14px;
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--gold);
+  }
+  @media (max-width:760px){
+    .current-bio-card{grid-template-columns:1fr;}
+    .current-bio-photo img{min-height:220px;}
+    .current-bio-info{padding:28px 24px;}
+  }
+
   /* ===== Notice + Programs two column ===== */
   .split-board{
     display:grid;
@@ -595,6 +749,45 @@
   }
   @media (max-width:880px){.split-board{grid-template-columns:1fr;} .board-col + .board-col{border-left:none; border-top:1px solid var(--line);}}
 
+  /* ===== Kitab Library (real book covers) ===== */
+  .kitab-grid{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:22px;
+  }
+  .kitab-card{
+    display:block;
+    text-decoration:none;
+  }
+  .kitab-cover{
+    aspect-ratio:3/4.1;
+    border-radius:4px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow: 0 10px 24px -10px rgba(15,61,46,0.35);
+    transition:transform .25s, box-shadow .25s;
+    background:#fff;
+  }
+  .kitab-cover img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .kitab-card:hover .kitab-cover{
+    transform:translateY(-4px);
+    box-shadow: 0 16px 30px -10px rgba(15,61,46,0.45);
+  }
+  .kitab-card .ktitle{
+    margin-top:12px;
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--emerald-deep);
+    text-align:center;
+    line-height:1.4;
+  }
+  @media (max-width:980px){.kitab-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:620px){.kitab-grid{grid-template-columns:repeat(2,1fr);}}
+
   /* ===== Gallery ===== */
   .gallery-grid{
     display:grid;
@@ -603,23 +796,28 @@
     gap:10px;
   }
   .gallery-grid .g-item{
-    background:linear-gradient(160deg, var(--sand), #DCCFA9);
     border-radius:5px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--teal);
-    font-size:0.78rem;
     position:relative;
     overflow:hidden;
+    background:var(--sand);
   }
-  .gallery-grid .g-item:nth-child(1){grid-row:span 2; background:linear-gradient(160deg, var(--teal), var(--emerald-deep)); color:var(--gold-soft);}
-  .gallery-grid .g-item::after{
-    content:'';
-    position:absolute; inset:0;
-    background-image: radial-gradient(circle at 1px 1px, rgba(15,61,46,0.15) 1px, transparent 1.4px);
-    background-size:16px 16px;
+  .gallery-grid .g-item img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .3s;
   }
+  .gallery-grid .g-item:hover img{ transform:scale(1.05); }
+  .gallery-grid .g-item .g-cap{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding:18px 12px 9px;
+    background:linear-gradient(180deg, transparent, rgba(10,43,32,0.85));
+    color:var(--cream);
+    font-size:0.78rem;
+    font-weight:600;
+  }
+  .gallery-grid .g-item:nth-child(1){grid-row:span 2;}
   @media (max-width:880px){.gallery-grid{grid-template-columns:repeat(2,1fr); grid-template-rows:140px 140px 140px;} .gallery-grid .g-item:nth-child(1){grid-row:span 1;}}
 
   /* ===== Wikipedia / info strip ===== */
@@ -728,10 +926,10 @@
   <header>
     <div class="nav-wrap">
       <div class="brand">
-        <div class="brand-mark"><span>GM</span></div>
+        <div class="brand-mark"><span>ছি</span></div>
         <div class="brand-text">
-          <div class="name">গাউছিয়া মুঈনীয়া কামিল মাদ্রাসা</div>
-          <div class="sub">ARUL ULOOM MADRASA</div>
+          <div class="name">ছিপাতলী জামেয়া গাউছিয়া</div>
+          <div class="sub">মূঈনীয়া কামিল মাদরাসা</div>
         </div>
       </div>
       <button class="menu-toggle" id="menuToggle">☰</button>
@@ -747,7 +945,7 @@
         <a href="#contact">যোগাযোগ</a>
       </nav>
       <div class="nav-cta">
-        <a href="#admin" class="btn-admin">অ্যাডমিন প্যানেল</a>
+        <a href="#contact" class="btn-admin">যোগাযোগ করুন</a>
       </div>
     </div>
   </header>
@@ -756,9 +954,9 @@
   <section class="hero" id="home" style="padding:0;">
     <div class="hero-inner">
       <div>
-        <div class="hero-eyebrow"><span class="rule"></span> ১৩৪২ হিজরি থেকে দ্বীনি শিক্ষার ধারাবাহিকতা</div>
+        <div class="hero-eyebrow"><span class="rule"></span> ১৩৯৪ হিজরি (১৯৭৪ খ্রিস্টাব্দ) থেকে দ্বীনি শিক্ষার গৌরবময় ধারাবাহিকতা।</div>
         <h1>ইলম ও আমলের <em>প্রদীপ্ত প্রতিষ্ঠান</em></h1>
-        <p class="lead">কুরআন, হাদীস ও ফিকহের সনাতন শিক্ষাধারা অনুসরণ করে আমাদের মাদ্রাসা প্রজন্মের পর প্রজন্ম আলেম, হাফেজ ও দ্বীনের খাদেম তৈরি করে আসছে।</p>
+        <p class="lead">কুরআন, হাদীস ও ফিকহের শিক্ষাধারা অনুসরণ করে আমাদের মাদ্রাসা প্রজন্মের পর প্রজন্ম আলেম, হাফেজ ও দ্বীনের খাদেম তৈরি করে আসছে।</p>
         <div class="hero-actions">
           <a href="#history" class="btn-gold">মাদ্রাসা সম্পর্কে জানুন</a>
           <a href="#contact" class="btn-outline">ভর্তি তথ্য নিন</a>
@@ -766,8 +964,11 @@
       </div>
       <div class="mihrab-wrap">
         <div class="mihrab">
+          <div class="mihrab-slide"></div>
+          <div class="mihrab-slide"></div>
+          <div class="mihrab-slide"></div>
           <div class="mihrab-content">
-            <div class="ar">دارالعلوم</div>
+            <div class="ar">ছিপাতলী জামেয়া</div>
             <div class="cap">শিক্ষা · তরবিয়ত · দাওয়াত</div>
           </div>
         </div>
@@ -775,10 +976,10 @@
     </div>
     <div class="hero-stats">
       <div class="hero-stats-inner">
-        <div><b>৭৫+</b><span>বছরের ইতিহাস</span></div>
-        <div><b>৬</b><span>শিক্ষা বিভাগ</span></div>
-        <div><b>১২০০+</b><span>প্রাক্তন ও বর্তমান ছাত্র</span></div>
-        <div><b>৪০+</b><span>বিজ্ঞ শিক্ষক ও মুহাদ্দিস</span></div>
+        <div><b>৫৩+</b><span>বছরের ইতিহাস</span></div>
+        <div><b>৫</b><span>শিক্ষা বিভাগ</span></div>
+        <div><b>৮০০+</b><span>প্রাক্তন ও বর্তমান ছাত্র</span></div>
+        <div><b>৩৫+</b><span>বিজ্ঞ শিক্ষক ও মুহাদ্দিস</span></div>
       </div>
     </div>
   </section>
@@ -789,7 +990,7 @@
       <div class="section-head">
         <div class="eyebrow"><span class="rule"></span>সবকিছু একসাথে<span class="rule"></span></div>
         <h2>প্রয়োজনীয় সকল সেবা এক জায়গায়</h2>
-        <p>মাদ্রাসার প্রতিটি বিভাগ ও সেবায় সহজে পৌঁছে যান — নিচের তালিকা থেকে যেকোনো একটি বেছে নিন।</p>
+        <p>মাদ্রাসার প্রতিটি বিভাগ ও সেবায় সহজে পৌঁছে যান <br> নিচের তালিকা থেকে যেকোনো একটি বেছে নিন।</p>
       </div>
       <div class="quick-grid">
         <a class="quick-card" href="#history">
@@ -799,13 +1000,8 @@
         </a>
         <a class="quick-card" href="#leadership">
           <div class="qicon">🕌</div>
-          <h3>দরবার পরিচিতি</h3>
+          <h3>দরবার ও পরিচালক</h3>
           <p>আধ্যাত্মিক নেতৃত্ব</p>
-        </a>
-        <a class="quick-card" href="#leadership">
-          <div class="qicon">🎓</div>
-          <h3>মুহতামিম পরিচিতি</h3>
-          <p>পরিচালনা পরিষদ</p>
         </a>
         <a class="quick-card" href="#library">
           <div class="qicon">📚</div>
@@ -837,11 +1033,6 @@
           <h3>যোগাযোগ</h3>
           <p>ঠিকানা ও বার্তা</p>
         </a>
-        <a class="quick-card" href="#admin">
-          <div class="qicon">🔐</div>
-          <h3>অ্যাডমিন প্যানেল</h3>
-          <p>পরিচালনা লগইন</p>
-        </a>
       </div>
     </div>
   </section>
@@ -850,13 +1041,21 @@
   <section id="history" class="alt-bg">
     <div class="section-inner history-grid">
       <div class="history-frame">
-        <span class="yr">১৩৪২</span>
-        <span class="yr-cap">হিজরি সনে প্রতিষ্ঠিত</span>
+        <span class="yr">১৩৯৪</span>
+        <span class="yr-cap">হিজরি, ৭ই রবিউল আউয়াল প্রতিষ্ঠিত</span>
       </div>
       <div class="history-text">
         <h2>মাদ্রাসার ইতিহাস</h2>
-        <p>স্থানীয় আলেম ও দ্বীনদার ব্যক্তিদের উদ্যোগে এই মাদ্রাসা প্রতিষ্ঠিত হয় একটি ছোট মসজিদভিত্তিক মাকতাব হিসেবে। সময়ের সাথে এটি একটি পূর্ণাঙ্গ দ্বীনি শিক্ষা প্রতিষ্ঠানে রূপ নেয়, যেখানে নূরানী, হিফজ, কিতাব বিভাগ ও ফতোয়া বিভাগ চালু রয়েছে।</p>
-        <p>আজও মাদ্রাসাটি তার প্রতিষ্ঠাকালীন আদর্শ — ইলম, আমল ও আখলাকের সমন্বয় — বুকে ধারণ করে এগিয়ে চলছে, এবং প্রতি বছর শত শত ছাত্র এখান থেকে দ্বীনি শিক্ষা গ্রহণ করছে।</p>
+        <p>ছিপাতলী জামেয়া গাউছিয়া মুঈনীয়া কামিল মাদ্রাসা বাংলাদেশের চট্টগ্রাম জেলার হাটহাজারী উপজেলার ছিপাতলী ইউনিয়নে অবস্থিত একটি ঐতিহ্যবাহী দ্বীনি শিক্ষা প্রতিষ্ঠান। ইসলামী জ্ঞান, সুন্নিয়ত এবং নৈতিক মূল্যবোধের আলোকে দক্ষ আলেম ও আদর্শ মানুষ গড়ে তোলার মহান লক্ষ্য নিয়ে প্রতিষ্ঠানটি ৭ রবিউল আউয়াল ১৩৯৪ হিজরি (১৯৭৪ খ্রিস্টাব্দ) সালে প্রতিষ্ঠিত হয়। <br>
+
+প্রতিষ্ঠার পর অল্প সময়ের মধ্যেই মাদ্রাসাটি শিক্ষা, শৃঙ্খলা এবং মানসম্মত পাঠদানের জন্য সুপরিচিত হয়ে ওঠে। পরবর্তীতে এটি কামিল স্তরে উন্নীত হয় এবং বর্তমানে ইসলামী আরবি বিশ্ববিদ্যালয়ের অধীনে অনার্স ও মাস্টার্স পর্যায়ের শিক্ষা কার্যক্রম পরিচালনা করছে। দেশের বিভিন্ন অঞ্চল থেকে আগত হাজারো শিক্ষার্থী এখানে শিক্ষা গ্রহণ করে সমাজ ও রাষ্ট্রের বিভিন্ন ক্ষেত্রে দ্বীনি খেদমত করে যাচ্ছেন। <br>
+
+
+<br>প্রতিষ্ঠানটির প্রতিষ্ঠাতা আল্লামা মুহাম্মদ আজিজুল হক আল-কাদেরী (রহ.)। তাঁর দূরদর্শী নেতৃত্ব, দ্বীনি খেদমতের অঙ্গীকার এবং আহলে সুন্নাত ওয়াল জামাআতের আদর্শ প্রচারের লক্ষ্য থেকেই এই মাদ্রাসার যাত্রা শুরু হয়। শুরু থেকেই প্রতিষ্ঠানটি কুরআন, হাদিস, ফিকহ, তাফসিরসহ ইসলামী শিক্ষার পাশাপাশি শিক্ষার্থীদের নৈতিক ও চারিত্রিক বিকাশে বিশেষ গুরুত্ব দিয়ে আসছে। <br>
+
+
+         <br> দীর্ঘ পথচলায় ছিপাতলী জামেয়া গাউছিয়া মুঈনীয়া কামিল মাদ্রাসা শুধু একটি শিক্ষা প্রতিষ্ঠান হিসেবেই নয়, বরং একটি আধ্যাত্মিক ও সামাজিক কেন্দ্র হিসেবেও সুপ্রতিষ্ঠিত হয়েছে। জ্ঞান, আদর্শ, মানবিক মূল্যবোধ এবং ইসলামের সুমহান শিক্ষা প্রচারের মাধ্যমে প্রতিষ্ঠানটি দেশের দ্বীনি শিক্ষার অঙ্গনে গুরুত্বপূর্ণ অবদান রেখে চলেছে।</p>
+        <p>৫৩ বছরের পথচলায় মাদ্রাসাটি তার প্রতিষ্ঠাকালীন আদর্শ — ইলম, আমল ও আখলাকের সমন্বয় — বুকে ধারণ করে এগিয়ে চলছে, এবং বাংলাদেশের বিভিন্ন প্রান্ত থেকে শিক্ষার্থীরা এখানে দ্বীনি শিক্ষা গ্রহণ করছে।</p>
         <a class="link-more" href="#">সম্পূর্ণ ইতিহাস পড়ুন →</a>
       </div>
     </div>
@@ -867,26 +1066,41 @@
     <div class="section-inner">
       <div class="section-head">
         <div class="eyebrow"><span class="rule"></span>নেতৃত্ব<span class="rule"></span></div>
-        <h2>দরবার ও মুহতামিম পরিচিতি</h2>
+        <h2>দরবার ও পরিচালক</h2>
+        <p>আজিজিয়া কাজেমী কমপ্লেক্স ট্রাস্ট, বাংলাদেশ</p>
       </div>
-      <div class="bio-grid">
-        <div class="bio-card">
-          <div class="bio-photo"><div class="ph-mark">ছবি</div></div>
-          <div class="bio-info">
-            <div class="role">দরবার শরীফ</div>
-            <h3>হযরত মাওলানা [দরবারের নাম]</h3>
-            <p>আধ্যাত্মিক পথপ্রদর্শক, যাঁর ইলম ও তাকওয়া অসংখ্য মানুষকে দ্বীনের পথে এনেছে। তাঁর তত্ত্বাবধানে মাদ্রাসার আত্মিক দিক পরিচালিত হয়।</p>
-            <a href="#">সম্পূর্ণ জীবনী →</a>
+
+      <div class="lineage-wrap">
+        <div class="lineage-label">খেলাফত লাভ</div>
+        <div class="lineage-chain">
+          <div class="lineage-item">
+            <div class="lnum">১</div>
+            <div class="ltext">গাজ্জালীয়ে যমান, সুলতানুল আরেফীন, মুহাদ্দেসে আযম, আল্লামা সৈয়দ আহমদ সাঈদ কাজেমী রাঃ</div>
+          </div>
+          <div class="lineage-item">
+            <div class="lnum">২</div>
+            <div class="ltext">মুফতীয়ে আজম হিন্দ, আল্লামা মোস্তফা রেজা খান বেরেলভী রাঃ</div>
+          </div>
+          <div class="lineage-item">
+            <div class="lnum">৩</div>
+            <div class="ltext">মদিনা শরীফের হযরত শাইখ জাকারিয়া বুখারী রাঃ</div>
           </div>
         </div>
-        <div class="bio-card">
-          <div class="bio-photo"><div class="ph-mark">ছবি</div></div>
-          <div class="bio-info">
-            <div class="role">মুহতামিম / অধ্যক্ষ</div>
-            <h3>মাওলানা [অধ্যক্ষের নাম]</h3>
-            <p>দীর্ঘদিনের শিক্ষাগত অভিজ্ঞতা সম্পন্ন একজন আলেম, যিনি মাদ্রাসার দৈনন্দিন শিক্ষা ব্যবস্থাপনা ও শিক্ষার্থীদের তরবিয়তের দায়িত্বে নিয়োজিত।</p>
-            <a href="#">সম্পূর্ণ জীবনী →</a>
-          </div>
+      </div>
+
+      <div class="current-bio-card">
+        <div class="current-bio-photo"><img src="images/darbar-mazar.jpg" alt="দরবার শরীফ"></div>
+        <div class="current-bio-info">
+          <div class="role">বর্তমান শায়খে তরিকত ও পরিচালক </div>
+
+          <p class="cb-sub">শায়খে তরিকত, উস্তাজুল ওলামা, হযরতুলহাজ্ব</p>
+          <h3>আল্লামা শাহজাদা আবুল ফরাহ মোহাম্মদ ফরিদ উদ্দীন আল্-কাদেরী (মা.জি.আ.)</h3>
+          
+          <ul class="title-list">
+            <li>অধ্যক্ষ — ছিপাতলী জামেয়া গাউছিয়া মূঈনীয়া কামিল (এম.এ) মাদ্রাসা</li>
+            <li>চেয়ারম্যান — আজিজিয়া কাজেমি কমপ্লেক্স ট্রাস্ট, বাংলাদেশ</li>
+            <li>সম্মানিত সাজ্জাদানশীন — দরবারে কাদেরীয়া চিশতীয়া আজিজিয়া আলীয়া শরীফ</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -920,20 +1134,24 @@
         </div>
         <div class="board-col" id="programs">
           <div class="board-head">
-            <h3>দাওয়াত নামা / প্রোগ্রাম</h3>
+            <h3>বাৎসরিক কর্মসূচী</h3>
             <a href="#">সব দেখুন →</a>
           </div>
           <div class="program-item">
-            <div class="ptitle">বার্ষিক মাহফিল ও দস্তারবন্দী অনুষ্ঠান</div>
-            <div class="pmeta"><span>১৫ রজব</span><span>মাদ্রাসা মাঠ</span></div>
+            <div class="ptitle">হুজুর কেবলার ওরছে কুল্ল, বাৎসরিক ফাতেহা শরীফ ও সালানা জলসা</div>
+            <div class="pmeta"><span>৩১ মার্চ</span><span>গাউছিয়া আজিজিয়া ময়দান</span></div>
           </div>
           <div class="program-item">
-            <div class="ptitle">খতমে বুখারী মাহফিল</div>
-            <div class="pmeta"><span>২২ রজব</span><span>মূল হলরুম</span></div>
+            <div class="ptitle">জশনে ঈদ-এ-মিলাদুন্নবী (দ.) মাহফিল ও জুলুস</div>
+            <div class="pmeta"><span>১–১২ রবিউল আউয়াল</span><span>মাদ্রাসা জামে মসজিদ</span></div>
           </div>
           <div class="program-item">
-            <div class="ptitle">ইসলামী জ্ঞান প্রতিযোগিতা</div>
-            <div class="pmeta"><span>৫ শাবান</span><span>শ্রেণিকক্ষ ভবন</span></div>
+            <div class="ptitle">গেয়ারবি শরীফ মাহফিল</div>
+            <div class="pmeta"><span>প্রতি চন্দ্রমাসের ১১ তারিখ রাত</span><span>হুজুর কেবলার খানকা শরীফ</span></div>
+          </div>
+          <div class="program-item">
+            <div class="ptitle">সাপ্তাহিক তালীমি জলসা ও যিকর মাহফিল</div>
+            <div class="pmeta"><span>প্রতি বৃহস্পতিবার রাত</span><span>হুজুর কেবলার মাজার শরীফ</span></div>
           </div>
         </div>
       </div>
@@ -946,13 +1164,29 @@
       <div class="section-head">
         <div class="eyebrow"><span class="rule"></span>ই-লাইব্রেরি<span class="rule"></span></div>
         <h2>পিডিএফ কিতাব লাইব্রেরি</h2>
-        <p>তাফসীর, হাদীস, ফিকহ ও আদব বিষয়ক কিতাবসমূহ পিডিএফ আকারে পড়ুন ও ডাউনলোড করুন।</p>
+        <p>হুজুর কেবলা ও দরবারের প্রকাশিত কিতাবসমূহ পিডিএফ আকারে পড়ুন ও ডাউনলোড করুন।</p>
       </div>
-      <div class="quick-grid" style="grid-template-columns:repeat(4,1fr);">
-        <a class="quick-card" href="#"><div class="qicon">📖</div><h3>তাফসীরে জালালাইন</h3><p>আরবি · পিডিএফ</p></a>
-        <a class="quick-card" href="#"><div class="qicon">📖</div><h3>বুখারী শরীফ</h3><p>আরবি-বাংলা · পিডিএফ</p></a>
-        <a class="quick-card" href="#"><div class="qicon">📖</div><h3>ফিকহুল ইসলামি</h3><p>বাংলা অনুবাদ · পিডিএফ</p></a>
-        <a class="quick-card" href="#"><div class="qicon">📖</div><h3>রিয়াদুস সালেহীন</h3><p>আরবি-বাংলা · পিডিএফ</p></a>
+      <div class="kitab-grid">
+        <a class="kitab-card" href="#">
+          <div class="kitab-cover"><img src="images/kitab-1.jpg" alt="দরূদে কিবরিতে আহমর শরীফ"></div>
+          <div class="ktitle">দরূদে কিবরিতে আহমর শরীফ</div>
+        </a>
+        <a class="kitab-card" href="#">
+          <div class="kitab-cover"><img src="images/kitab-2.jpg" alt="তাফসীরে ফাউযুল আযীয"></div>
+          <div class="ktitle">তাফসীরে ফাউযুল আযীয</div>
+        </a>
+        <a class="kitab-card" href="#">
+          <div class="kitab-cover"><img src="images/kitab-3.jpg" alt="গ্রন্থাবলীর সংক্ষিপ্ত পরিচিতি"></div>
+          <div class="ktitle">গ্রন্থাবলীর সংক্ষিপ্ত পরিচিতি</div>
+        </a>
+        <a class="kitab-card" href="#">
+          <div class="kitab-cover"><img src="images/kitab-4.jpg" alt="মুনীয়াতুল মুছল্লীন"></div>
+          <div class="ktitle">মুনীয়াতুল মুছল্লীন (মাছআলা-মাছায়েল) ১ম খণ্ড</div>
+        </a>
+        <a class="kitab-card" href="#">
+          <div class="kitab-cover"><img src="images/kitab-5.jpg" alt="তাযকিরাতুন নুফুসিল কুদসিয়্যাহ"></div>
+          <div class="ktitle">তাযকিরাতুন নুফুসিল কুদসিয়্যাহ ১ম খণ্ড</div>
+        </a>
       </div>
     </div>
   </section>
@@ -965,12 +1199,12 @@
         <h2>গ্যালারি</h2>
       </div>
       <div class="gallery-grid">
-        <div class="g-item">মূল ভবন</div>
-        <div class="g-item">দস্তারবন্দী ২০২৫</div>
-        <div class="g-item">হিফজ ক্লাস</div>
-        <div class="g-item">বার্ষিক মাহফিল</div>
-        <div class="g-item">লাইব্রেরি কক্ষ</div>
-        <div class="g-item">ক্রীড়া অনুষ্ঠান</div>
+        <div class="g-item"><img src="images/gallery-building1.jpg" alt="মাদ্রাসা ভবন"><div class="g-cap">মাদ্রাসা ভবন ও মাঠ</div></div>
+        <div class="g-item"><img src="images/gallery-quran.jpg" alt="কুরআন তিলাওয়াত"><div class="g-cap">দরবার শরীফে কুরআন তিলাওয়াত</div></div>
+        <div class="g-item"><img src="images/gallery-turban-close.jpg" alt="মাজার সজ্জা"><div class="g-cap">মাজার শরীফ সজ্জা</div></div>
+        <div class="g-item"><img src="images/gallery-stage.jpg" alt="মাহফিল মঞ্চ"><div class="g-cap">মাহফিল মঞ্চ সজ্জা</div></div>
+        <div class="g-item"><img src="images/gallery-turban-place.jpg" alt="উরস অনুষ্ঠান"><div class="g-cap">উরস শরীফ অনুষ্ঠান</div></div>
+        <div class="g-item"><img src="images/gallery-building2.jpg" alt="মাদ্রাসা ভবন"><div class="g-cap">মাদ্রাসা ক্যাম্পাস</div></div>
       </div>
     </div>
   </section>
@@ -981,14 +1215,14 @@
       <div>
         <h2>উইকিপিডিয়া তথ্যপঞ্জি</h2>
         <p>মাদ্রাসা সম্পর্কে সংক্ষিপ্ত তথ্য, যা একটি বিশ্বকোষীয় ভুক্তির আদলে সাজানো — দ্রুত পরিচিতির জন্য।</p>
-        <a class="btn-outline" href="#">সম্পূর্ণ ভুক্তি দেখুন</a>
+        <a class="btn-outline" href="https://bn.wikipedia.org/wiki/ছিপাতলী_জামেয়া_গাউছিয়া_মুঈনীয়া_কামিল_মাদ্রাসা" target="_blank" rel="noopener">সম্পূর্ণ ভুক্তি দেখুন</a>
       </div>
       <div class="wiki-facts">
         <dl>
-          <dt>প্রতিষ্ঠাকাল</dt><dd>১৩৪২ হিজরি</dd>
-          <dt>ধরন</dt><dd>দ্বীনি শিক্ষা প্রতিষ্ঠান</dd>
-          <dt>অবস্থান</dt><dd>বাংলাদেশ</dd>
-          <dt>বিভাগ</dt><dd>নূরানী, হিফজ, কিতাব, ফতোয়া</dd>
+          <dt>প্রতিষ্ঠাকাল</dt><dd>১৩৯৪ হিজরি, ৭ই রবিউল আউয়াল</dd>
+          <dt>ধরন</dt><dd>কামিল মাদ্রাসা (দ্বীনি শিক্ষা প্রতিষ্ঠান)</dd>
+          <dt>অবস্থান</dt><dd>ছিপাতলী ইউনিয়ন, হাটহাজারী, চট্টগ্রাম</dd>
+          <dt>বিভাগ</dt><dd>নূরানী, হিফজ, কিতাব, ফতোয়া, ইফতা</dd>
           <dt>মাধ্যম</dt><dd>আরবি ও বাংলা</dd>
         </dl>
       </div>
@@ -1000,8 +1234,8 @@
     <div class="contact-wrap">
       <div>
         <div class="fbrand">
-          <div class="brand-mark"><span>দা</span></div>
-          <div class="name">দারুল উলূম মাদ্রাসা</div>
+          <div class="brand-mark"><span>ছি</span></div>
+          <div class="name">ছিপাতলী জামেয়া গাউছিয়া<br>মূঈনীয়া কামিল মাদরাসা</div>
         </div>
         <p>ইলম, আমল ও আখলাকের সমন্বয়ে গড়া একটি দ্বীনি শিক্ষা প্রতিষ্ঠান — প্রজন্মের পর প্রজন্ম দ্বীনের খেদমতে নিয়োজিত।</p>
       </div>
@@ -1009,18 +1243,18 @@
         <h4>লিংক সমূহ</h4>
         <ul>
           <li><a href="#history">মাদ্রাসার ইতিহাস</a></li>
-          <li><a href="#leadership">দরবার ও মুহতামিম</a></li>
+          <li><a href="#leadership">দরবার ও পরিচালক</a></li>
           <li><a href="#library">কিতাব লাইব্রেরি</a></li>
           <li><a href="#board">নোটিশ বোর্ড</a></li>
-          <li><a href="#admin">অ্যাডমিন প্যানেল</a></li>
+          <li><a href="#gallery">গ্যালারি</a></li>
         </ul>
       </div>
       <div>
         <h4>যোগাযোগ</h4>
         <ul>
-          <li>📍 গ্রাম/উপজেলা, জেলা, বাংলাদেশ</li>
-          <li>📞 +৮৮০ ১XXX-XXXXXX</li>
-          <li>✉️ info@madrasa.example</li>
+          <li>📍 গ্রাম: ছিপাতলি, উপজেলা: হাটহাজারী, জেলা: চট্টগ্রাম</li>
+          <li>📞 ০১৮১৯৩৩৭৮৫৪ (অধ্যক্ষ মহোদয়)</li>
+          <li>✉️ chipa_jgmkm@yahoo.com</li>
         </ul>
       </div>
       <div class="contact-form">
@@ -1031,7 +1265,7 @@
         <button type="button">পাঠিয়ে দিন</button>
       </div>
     </div>
-    <div class="foot-bottom">© ২০২৬ দারুল উলূম মাদ্রাসা। সর্বস্বত্ব সংরক্ষিত।</div>
+    <div class="foot-bottom">© ২০২৬ ছিপাতলী জামেয়া গাউছিয়া মূঈনীয়া কামিল মাদরাসা। সর্বস্বত্ব সংরক্ষিত।</div>
   </footer>
 
 <script>
